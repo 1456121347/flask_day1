@@ -13,16 +13,16 @@
     <img src="{{ url_for('static', filename='img/1.jpg') }}" alt="" class='img1'>
     <h2>{{ user.name }} watchlist</h2>
     <!-- flash消息 -->
-    {% for message in get_flashed_messages() %}
-        <div class='alret'>{{ message }}</div>
+    {% for i in get_flashed_messages() %}
+        <div class='alret'>{{ i }}</div>
     {% endfor %}
     <nav>
         <ul>
             <li><a href="{{ url_for('index') }}">首页</a></li>
         </ul>
     </nav>
-    {% block content %}
-    {% endblock %}
+    <!-- {% block content %} -->
+    <!-- {% endblock %} -->
 
     <footer>
         <small>&copy;2020 &nbsp;&nbsp;&nbsp;  <a href="">1903c</a></small>
