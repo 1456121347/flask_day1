@@ -13,20 +13,20 @@ else:
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] =  prefix + os.path.join(app.root_path,'data.db')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # 对内存做优化
+# app.config['SQLALCHEMY_DATABASE_URI'] =  prefix + os.path.join(app.root_path,'data.db')
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # 对内存做优化
 
 db = SQLAlchemy(app) # 初始化app
 
-# models 数据层
-class User(db.Model):
-    id = db.Column(db.Integer,primary_key=True)
-    name = db.Column(db.String(20))
+# # models 数据层
+# class User(db.Model):
+#     id = db.Column(db.Integer,primary_key=True)
+#     name = db.Column(db.String(20))
 
-class Movie(db.Model):
-    id = db.Column(db.Integer,primary_key=True)
-    title = db.Column(db.String(20))
-    year = db.Column(db.String(4))
+# class Movie(db.Model):
+#     id = db.Column(db.Integer,primary_key=True)
+#     title = db.Column(db.String(20))
+#     year = db.Column(db.String(4))
 
 
 
@@ -34,18 +34,18 @@ class Movie(db.Model):
 # views 视图函数
 @app.route('/')
 def index():
-    # name = '席栋祥'
-    # movie = [
-    #     {'title':"大赢家",'year':"2020"},
-    #     {'title':"囧妈",'year':"2020"},
-    #     {'title':"疯狂外星人",'year':"2019"},
-    #     {'title':"战狼",'year':"2005"},
-    #     {'title':"战狼2",'year':"2017"},
-    #     {'title':"非常完美",'year':"2017"},
-    #     {'title':"非常完美",'year':"2017"},
-    # ]
-    name = User.query.all()
-    movie = Movie.query.all()
+    name = '席栋祥'
+    movie = [
+        {'title':"大赢家",'year':"2020"},
+        {'title':"囧妈",'year':"2020"},
+        {'title':"疯狂外星人",'year':"2019"},
+        {'title':"战狼",'year':"2005"},
+        {'title':"战狼2",'year':"2017"},
+        {'title':"非常完美",'year':"2017"},
+        {'title':"非常完美",'year':"2017"},
+    ]
+    # name = User.query.all()
+    # movie = Movie.query.all()
     return render_template('index.html',name=name,movie=movie)
 
 # 自定义命令
@@ -59,7 +59,7 @@ def initdb(drop):
 
 
 
-@app.errorhandler(404)
-def pa (e):
-    name =User.query.all()
-    return render_template("404.html",name = name)
+# @app.errorhandler(404)
+# def pa (e):
+#     name =User.query.all()
+#     return render_template("404.html",name = name)
