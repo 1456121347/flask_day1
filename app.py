@@ -65,13 +65,13 @@ def initdb(drop):
 # 向数据库插入数据
 @app.cli.command()
 def forge():
-    name = '席栋祥'
-    movie = [
-        {'title':"大赢家",'year':"2020"},
-        {'title':"囧妈",'year':"2020"},
-        {'title':"疯狂外星人",'year':"2019"},
-        {'title':"战狼",'year':"2017"}
-    ]
+    # name = '席栋祥'
+    # movie = [
+    #     {'title':"大赢家",'year':"2020"},
+    #     {'title':"囧妈",'year':"2020"},
+    #     {'title':"疯狂外星人",'year':"2019"},
+    #     {'title':"战狼",'year':"2017"}
+    # ]
     user = User(name=name)
     db.session.add(user)
     for m in movie:
