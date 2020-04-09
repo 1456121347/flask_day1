@@ -59,13 +59,19 @@
                 </div>
             </li>
             <li>
-                <div class="removed">
+                <div class="checkbox">
                     <label for="">
                         <input class="js-item" type="checkbox"> 电脑
                     </label>
                 </div>
             </li>
         </ul>
+        <!-- 修改标题 -->
+        <div class="footer">
+            <hr>
+            <span>改变你的标题</span>
+            <input type="text" class="js-change-title" value="我的购物车清单">
+        </div>
     </div>
 </body>
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
@@ -92,15 +98,28 @@
                 // 最后一个获取无序列表 添加到div中
             $label = $('<label>').appendTo($div)
                 // 获取input框 添加到label 里 添加个class js-item 然后 attr是代表属性('type','checkbox')
-            $('<input>').addClass('js-item').attr('type','checkbox').appendTo($label)
+            $('<input>').addClass('js-item').attr('type','checkbox').appendTo($label).click(toggleRemoved)
             // 获取输入框里面的内容 添加到label里
             $label.append(value)
             // 字后在把输入框里的东西时刻的清空
             $('.js-new-item').val('');
         }
-        // 形成一个点击事件， js-add 是点击添加到购物车class click 点击 外部函数 onAdd
+        function toggleRemoved(ev){
+            //获取当前点击的对象  closest遍历 li
+            $(ev.currentTarget).closest("li").toggleClass("removed")
+        }
+        // 改变清单标题
+        function onchangeTitle(){
+            $("h2").text($(".js-change-title").val())
+        }
 
+        // 形成一个点击事件， js-add 是点击添加到购物车class click 点击 外部函数 onAdd
         $(".js-add").click(onAdd)
+
+        $(".js-item").click(toggleRemoved)
+        
+        // 给你js-change-title添加事件
+        $(".js-change-title").keyup(onchangeTitle)
     })
 </script>
 </html>

@@ -10,29 +10,44 @@
 
 ​	2.前端代码体验
 
-​		使用HTML 构建结构
+​		使用HTML           构建结构
 
-​		使用CSS修饰页面效果
+​		使用CSS              修饰页面效果
 
-​		使用JavaScript实现动态效果
+​		使用JavaScript     实现动态效果
 
 ​		2.1 获取页面元素效果
 
-​		2.2改变元素内容或样式
+​		2.2 改变元素内容或样式
 
  3. VSCode前端环境配置
 
-    3.1 安装Beautify ，它用来格式化代码
+    3.1 安装 Beautify ，它用来格式化代码
 
-    3.2 安装 open in browser
+    3.2 安装 open in browser  查看页面展示效果
+    3.3 安装 vscode-icons
 
- 4. 
+    3.4 安装 vetur                    支持vue
 
-​		
+    3.5 安装  Live Server         浏览器实现更新	
 
 二，动手写一个购物车效果
 
+​	1.HTML ,CSS ,JavaScript，jQuery（2006，JavaScript函数库，Bootstrap（UI)）
 
+​		引入库：https://www.bootcdn.cn/
+
+​	2.非工程化方式的vue
+
+​		数据绑定
+
+​		v-model 双向数据绑定
+
+​		v-for 循环遍历 渲染列表项
+
+​		v-on 绑定事件
+
+​		v-bind 绑定数据和元素属性
 
 
 
