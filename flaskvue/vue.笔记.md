@@ -52,3 +52,5 @@
 
 
 三，动手写一个ToDOList应用
+
+下载bootstrap，把css和fonts文件夹都复制到demo文件夹中
