@@ -57,28 +57,64 @@
 
 设置一个倒计时，比如说初始时间是25分钟，进入work（工作）状态，25分钟到点后就是一个5分钟的rest（休息）状态，如此反复
 
-
-
 ## 四、Vue2.X工程化环境搭建
 
 1. 下载nodejs：https://nodejs.org/en/，npm包管理工具
 
    检查是否已经安装，cmd中输入node -v检查node ，npm -v 检查npm
 
-2. 用管理员身份打开cmd或者cmder或者gitbash：运行npm install -g vue-cli，vue-cli是vue的脚手架工具  ，Mac Terminal中增强权限sudo
+2. 用管理员身份打开cmd或者cmder或者gitbash：运行npm install -g vue-cli，vue-cli是vue的脚手架工具 ，Mac Terminal中增强权限sudo
 
    如果之前安装过，可以先卸载 vue-cli：npm uninstall -g vue-cli
 
-   输入vue --version检查是否安装成功
+   输入vue –version检查是否安装成功
 
-3. 初始化项目  vue init webpack practise
+3. 初始化项目 vue init webpack practise
 
-   进入到项目中  cd practise
+   进入到项目中 cd practise
 
-   运行项目  npm run dev
-
-   
+   运行项目 npm run dev
 
 4. 启动单元测试：npm run unit
 
-5. 启动端对端测试e2e：npm run e2e，先搁置
+5. 启动端对端测试e2e：npm run e2e，因为selenium需要Java的环境，所以先要安装Java的JDK（关注右侧公众号或微信中搜索“即学即会IT课”，点击java即可获取安装视频），安装好之后，先把谷歌浏览器升级到最新版本，然后把node_modules中的chrome-driver文件夹删掉，把package.json中的chrome-driver依赖删掉，执行以下npm install；最后执行 npm install chromedriver --chromedriver_cdnurl=https://npm.taobao.org/mirrors/chromedriver 从淘宝的镜像安装chrome-driver即可。（关键点：chrome一定要是最新，chrome-driver也是最新，这两个版本一定一定要对应，否则会报错）
+
+6. 安装vue-devtools，打开 https://github.com/vuejs/vue-devtools ，将Branch切换到master分支，再点击clone or download按钮下载；下载完成后，将压缩包解压，进入到vue-devtools文件夹中，执npm install (安装依赖)，运行完成后，再执行npm run build (编译文件)。打开谷歌浏览器的设置—> 扩展程序—>加载已解压的扩展程序（确保右上角开发者模式已经打开），选中vue-devtools文件夹中的shells中的chrome文件夹即可，重启浏览器生效。视频地址：
+
+   
+
+   视频播放器
+
+   <video class="wp-video-shortcode" id="video-260-1_html5" width="640" height="360" preload="metadata" src="http://itzhao.club/wp-content/uploads/2020/04/%E5%AE%89%E8%A3%85vue-devtools%E6%89%A9%E5%B1%95%E5%B7%A5%E5%85%B7.mp4?_=1" style="box-sizing: border-box; display: inline-block; vertical-align: baseline; font-family: Helvetica, Arial; max-width: 100%; width: 602px; height: 338.625px;"></video>
+
+   00:00
+
+   05:33
+
+## 五、MVVM架构
+
+MTV，MVC
+
+1. 名词解释 View（div #app） Model（var data） ViewModel
+
+   Model-View-ViewModel MVVM
+
+2. 数据传入Vue实例后发生了什么？
+
+   ```
+   var obj = {}
+   undefined
+   var text = ''
+   undefined
+   var oH2 = document.getElementsByTagName('h2')[0]
+   undefined
+   Object.defineProperty(obj,'text',{
+     get:function(){ return text; },
+     set:function(newVal){text=newVal;oH2.innerHTMl=text;}
+   });
+   {}text: (...)get text: ƒ ()set text: ƒ (newVal)__proto__: Object
+   obj.text = "nidedingdan"
+   "nidedingdan
+   ```
+
+   通过setters，getters方法实现的双向数据绑定，数据驱动

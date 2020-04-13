@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div id="app">
   <h2>我的购物车清单</h2>
   <div class="input-group">
     <input class="js-new-item form-control" type="text" placeholder="输入你想购买的物品" />
@@ -24,7 +24,7 @@
       </div>
     </li>
     <li>
-      <div class="checkbox">
+      <div class="removed">
         <label for>
           <input type="checkbox" class="js-item" /> 电脑
         </label>
@@ -44,7 +44,7 @@
 </script>
 
 <style>
-.container {
+.app {
   width: 40%;
   margin: 100px auto;
 }
@@ -56,11 +56,11 @@
 .removed label {
   text-decoration: line-through;
 }
-ul{
+ul {
   border: 1px solid black;
   margin-top: 30px;
 }
-ul li{
+ul li {
   list-style: none;
 }
 </style>
