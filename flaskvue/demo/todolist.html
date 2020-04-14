@@ -10,23 +10,15 @@
 
 <body>
     <div class="container" id="app" style="width: 500px; height: 50px;text-align: center;line-height: normal;">
-        <h2>
-            <span>倒计时</span>
-            <button class="btn btn-default" :disabled="state==='started'" v-on:click="start()">
-                <i class="glyphicon glyphicon-play"></i>
-            </button>
-            <button class="btn btn-default" :disabled="state!=='started'" v-on:click="pause()">
-                <i class="glyphicon glyphicon-pause"></i>
-            </button>
-            <button class="btn btn-default" :disabled="state!=='started' && state!=='paused'" v-on:click="stop()">
-                <i class="glyphicon glyphicon-stop"></i>
-            </button>
-        </h2>
+       
+        <items-component></items-component>
+          
+       
         <h3 style="width: 500px; height: 50px;text-align: center;line-height: normal;border-top-left-radius:40px;border-top-right-radius:40px;border-bottom-right-radius:40px;border-bottom-left-radius:40px;">{{ workState }}</h3>
         <div class="well"  style="width: 500px; height: 50px;">
-            <div class="dao-timer" style="text-align: center;line-height: normal;">
-                <span>{{ min }}分钟</span>:<span>{{ sec }}秒</span>
-            </div>
+            
+            <add-item-component>  
+            
         </div>
     </div>
 </body>
@@ -46,16 +38,41 @@
         STOPPED:'stopped',
         PAUSE:'paused'
     }
+    var data = {
+        minute: WORKING_TIME_LENGTH_IN_MINUTES,
+        second: 0,
+        workState: WROK_STATES.WORK,
+        timestamp: 0,
+        state:STATES.STOPPED,
+        
 
-    new Vue({
-        el: "#app",
-        data: {
-            minute: WORKING_TIME_LENGTH_IN_MINUTES,
-            second: 0,
-            workState: WROK_STATES.WORK,
-            timestamp: 0,
-            state:STATES.STOPPED
+    };
+    
+    // 创建组件
+    var aaComponent = Vue.extend({
+        data:function(){
+            return STATES;
         },
+        template:
+            '<h2>'+
+                '<span>倒计时</span>'+
+                ' <button class="btn btn-default">'+
+                    ' <i class="glyphicon glyphicon-play"></i>'+
+                '</button>'+
+                '<button class="btn btn-default">'+
+                    '<i class="glyphicon glyphicon-pause"></i>'+
+                '</button>'+
+                '<button class="btn btn-default">'+
+                    '<i class="glyphicon glyphicon-stop"></i>'+
+                '</button>'+
+            '</h2>'
+    });
+    
+    var bbComponent = Vue.extend({
+        data:function(){
+            return data;
+        },
+        
         computed: {
             // 计算属性的 getter
             min: function () {
@@ -109,8 +126,24 @@
                 }
 
             }
-        }
-    })
+        },
+        template:
+        '<div class="dao-timer" style="text-align: center;line-height: normal;">'+
+            '<span>{{ min }}分钟</span>:<span>{{ sec }}秒</span>'+
+        '</div>'
+          
+    });
+    // 注册组件
+    Vue.component('items-component',aaComponent);
+    Vue.component('add-item-component',bbComponent);
+    
+    new Vue({
+        el: "#app",
+        data:data,
+        
+        
+    });
+   
 </script>
 
 </html>

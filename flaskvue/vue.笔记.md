@@ -86,10 +86,9 @@
    视频播放器
 
    <video class="wp-video-shortcode" id="video-260-1_html5" width="640" height="360" preload="metadata" src="http://itzhao.club/wp-content/uploads/2020/04/%E5%AE%89%E8%A3%85vue-devtools%E6%89%A9%E5%B1%95%E5%B7%A5%E5%85%B7.mp4?_=1" style="box-sizing: border-box; display: inline-block; vertical-align: baseline; font-family: Helvetica, Arial; max-width: 100%; width: 602px; height: 338.625px;"></video>
-
-   00:00
-
-   05:33
+00:00
+   
+05:33
 
 ## 五、MVVM架构
 
@@ -118,3 +117,53 @@ MTV，MVC
    ```
 
    通过setters，getters方法实现的双向数据绑定，数据驱动
+   
+   ## 六、Vue.js基础
+   
+   1. 组件（灵活，可复用，每个组件都有属于自己的样式和模板，完全独立的）
+   
+      创建组件： var ItemsComponents = Vue.extend({ })
+   
+      注册组件：Vue.component(‘items-component’,ItemsComponents)
+   
+      使用组件：<‘items-component></’items-component>
+   
+      购物车案例可以拆分为：添加到购物车，列表，改变标题
+   
+   2. 指令(自定义指令)
+   
+      注册自定义指令，用到三个函数：
+   
+      bind：向元素附加一个事件监听器，
+   
+      update：接收新值和旧值作为参数（数据变化时自定义行为）
+   
+      unbind：解绑所有需要解除的操作
+   
+   3. 插件
+   
+      插件是Vue的核心功能，它提供了对数据绑定的声明及组件编译。
+   
+      插件的主要分类：
+   
+      - 增加全局的属性或者方法(vue-element)
+      - 增加全局能力的插件(vue-touch)
+      - 在Vue属性上增加Vue实例
+      - 提供一些扩展功能或API（vue-router）
+   
+      插件的用法：必须通过一个可以增强或改进的全局的Vue对象来提供一个实例方法。Vue使用use方法来接收插件实例 Vue.use()
+   
+   1. 从package.json构建Vue工程
+   
+      npm install -g browserify 安装browserify 可以参考：https://www.dazhuanlan.com/2019/12/05/5de8db0d13a50/
+   
+      ```
+      "devDependencies": {
+              "babel-preset-es2015": "^6.24.1", //将ES6语法转换成浏览器可以使用的ES5的语法
+              "babelify": "^7.3.0",  //必须是这个7.x版本
+              "browserify": "^16.5.1",//JavaScript构建工具，和webpack类似 
+              "vue": "^2.6.11"
+       },
+      ```
+   
+      browserify script.js -o main.js -t [ babelify –presets [ es2015 ] ]
