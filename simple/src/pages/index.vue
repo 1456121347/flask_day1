@@ -18,7 +18,7 @@
       <div class="index-left-block lastest-news">
         <h2>最新消息</h2>
         <ul>
-          <li>ddd</li>
+          <li>dddd</li>
         </ul>
       </div>
     </div>
