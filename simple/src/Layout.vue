@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="body">
     <div class="app-head">
       <div class="app-head-inner">
         <img src="./assets/logo.png" alt="">
@@ -18,7 +18,7 @@
       <router-view></router-view>
     </div>
     <div class="app-footer">
-      <p>&copy; 1903C — 2020</p>
+      <p>&copy; 1903C - 2020</p>
     </div>
   </div>
 </template>
@@ -29,47 +29,13 @@ export default {
 </script>
 
 <style>
-/* reset样式 */
-html,body,div,span,applet,object,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
-	margin:0;
-	padding:0;
-	border:0;
-	font-size:100%;
-	font:inherit;
-	font-weight:normal;
-	vertical-align:baseline;
-}
-ol,ul,li {
-	list-style:none;
-}
-blockquote,q {
-	quotes:none;
-}
-blockquote:before,blockquote:after,q:before,q:after {
-	content:'';
-	content:none;
-}
-table {
-	border-collapse:collapse;
-	border-spacing:0;
-}
-th,td {
-	vertical-align:middle;
-}
-/* custom */
-a {
-	outline:none;
-	color:#16418a;
-	text-decoration:none;
-	-webkit-backface-visibility:hidden;
-}
-a:focus {
-	outline:none;
-}
-input:focus,select:focus,textarea:focus {
-	outline:-webkit-focus-ring-color auto 0;
-}
+
 /* layout样式 */
+.body{
+  background: #f0f2f5;
+  font-size: 15px;
+  color: #444;
+}
 .app-head {
   background: #363636;
   color: #b2b2b2;
@@ -107,5 +73,45 @@ input:focus,select:focus,textarea:focus {
 .app-content{
   width: 1200px;
   margin: 0 auto;
+}
+/* reset样式 */
+html,body,div,span,applet,object,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
+	margin:0;
+	padding:0;
+	border:0;
+	font-size:100%;
+	font:inherit;
+	font-weight:normal;
+	vertical-align:baseline;
+}
+ol,ul,li {
+	list-style:none;
+}
+blockquote,q {
+	quotes:none;
+}
+blockquote:before,blockquote:after,q:before,q:after {
+	content:'';
+	content:none;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+th,td {
+	vertical-align:middle;
+}
+/* custom */
+a {
+	outline:none;
+	color:#16418a;
+	text-decoration:none;
+	/* -webkit-backface-visibility:hidden; */
+}
+a:focus {
+	outline:none;
+}
+input:focus,select:focus,textarea:focus {
+	outline:-webkit-focus-ring-color auto 0;
 }
 </style>
