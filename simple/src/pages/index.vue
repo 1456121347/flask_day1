@@ -8,52 +8,30 @@
           <h3>{{ product.title }}</h3>
           <ul>
             <li v-for="item in product.list">
-              <a v-bind:href="item.url">{{ item.title}}</a>
+              <a v-bind:href="item.url">{{ item.title }}</a>
               <span v-if="item.hot" class="hot-tag">HOT</span>
             </li>
           </ul>
-          <!-- <div v-if="product.title == 'PC产品'" class="hr"></div> -->
           <div v-if="!product.last" class="hr"></div>
         </template>
       </div>
       <!-- 最新消息 -->
       <div class="index-left-block lastest-news">
         <h2>最新消息</h2>
-        <li v-for="item in newsList">
-          <a v-bind:href="item.url">{{ item.title }}</a>
-        </li>
+        <ul>
+          <li v-for="item in newsList">
+            <a v-bind:href="item.url">{{ item.title }}</a>
+          </li>
+        </ul>
       </div>
     </div>
     <div class="index-right">
-      <div
-        style="font-size:40px;text-align:center;line-height:300px;width:900px;height:300px;background:red;margin:0 auto"
-      >祥</div>
+      <slider-component></slider-component>
       <div class="index-board-list">
-        <div class="index-board-item">
+        <div class="index-board-item" v-for="item in boardList">
           <div class="index-board-item-inner">
-            <h2>戴尔</h2>
-            <p>非常棒</p>
-            <div class="index-board-button">立即购买</div>
-          </div>
-        </div>
-        <div class="index-board-item">
-          <div class="index-board-item-inner">
-            <h2>戴尔</h2>
-            <p>非常棒</p>
-            <div class="index-board-button">立即购买</div>
-          </div>
-        </div>
-        <div class="index-board-item">
-          <div class="index-board-item-inner">
-            <h2>戴尔</h2>
-            <p>非常棒</p>
-            <div class="index-board-button">立即购买</div>
-          </div>
-        </div>
-        <div class="index-board-item">
-          <div class="index-board-item-inner">
-            <h2>戴尔</h2>
-            <p>非常棒</p>
+            <h2>{{ item.title }}</h2>
+            <p>{{ item.description }}</p>
             <div class="index-board-button">立即购买</div>
           </div>
         </div>
@@ -63,105 +41,54 @@
 </template>
 
 <script>
+import SliderComponent from '../components/sliderComponent'
 import axios from "axios";
 export default {
+  // 注册
+  components:{
+    SliderComponent
+  },
   mounted() {
+    // 接口获取数据
     axios
-      .post("api/getNewsList")
-      .then(res => {
-        console.log(res);
-        this.newsList = res.data.list;
+      .get("api/getNewsList")   /*接口*/
+      .then(response => {       /*请求成功*/
+        // handle success 
+        console.log(response);     
+        this.newsList = response.data.list;
       })
-      .catch(error => {
-        console.log(error);
+      .catch(error => {        /*请求失败 */ 
+        // handle error
+        console.log(error);    
       });
     axios
-      .get("api/getProductsList")
-      .then(res => {
-        console.log(res);
-        this.newsList = res.data.list;
+      .get("api/getProductList")
+      .then(response => {
+        // handle success
+        console.log(response);  /* 打印 */ 
+        this.productList = response.data;
       })
       .catch(error => {
+        // handle error
         console.log(error);
       });
     axios
       .get("api/getBoardList")
-      .then(res => {
-        console.log(res);
-        this.newsList = res.data.list;
+      .then(response => {
+        // handle success
+        console.log(response);
+        this.boardList = response.data;
       })
       .catch(error => {
+        // handle error
         console.log(error);
       });
   },
   data() {
     return {
-      newsList: [
-        {
-          title: "数据统计",
-          url: "http://starcraft.com"
-        },
-        {
-          title: "数据预测",
-          url: "http://warcraft.com"
-        },
-        {
-          title: "流量分析",
-          url: "http://overwatch.com"
-        },
-        {
-          title: "广告发布",
-          url: "http://hearstone.com"
-        }
-      ],
-      productList: {
-        pc: {
-          title: "PC产品",
-          list: [
-            {
-              title: "数据统计",
-              url: "http://starcraft.com"
-            },
-            {
-              title: "数据预测",
-              url: "http://warcraft.com"
-            },
-            {
-              title: "流量分析",
-              url: "http://overwatch.com",
-              hot: true
-            },
-            {
-              title: "广告发布",
-              url: "http://hearstone.com"
-            }
-          ]
-        },
-        app: {
-          title: "手机应用类",
-          last: true,
-          list: [
-            {
-              title: "91助手",
-              url: "http://weixin.com"
-            },
-            {
-              title: "产品助手",
-              url: "http://weixin.com",
-              hot: true
-            },
-            {
-              title: "智能地图",
-              url: "http://maps.com"
-            },
-            {
-              title: "语音助手",
-              url: "http://phone.com",
-              hot: true
-            }
-          ]
-        }
-      }
+      newsList: [],
+      productList: null,
+      boardList: null
     };
   }
 };
