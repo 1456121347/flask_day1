@@ -3,17 +3,16 @@
         <!-- 四张轮播图 -->
         <div v-show="newIndex === index" class="slider-item" v-bind:class="['item' +[index+1]]" v-for="(item,index) in sliderImgList" v-bind:key="index">
             <a href="">
-                <img v-bind:src="item" style="width:900px;height:500px;" alt="">
+                <img v-bind:src="item.imgUrl" style="width:900px;height:500px;" alt="">
             </a>
         </div>
+        <h2 class="slider-title">{{sliderImgList[newIndex].title }}</h2>
         <!-- 左右<> 按钮 -->
         <a v-on:click="preHandler" class="btn pre-btn" href="javascript:void(0)">&lt;</a>
         <a v-on:click="nextHandler" class="btn next-btn" href="javascript:void(0)">&gt;</a>
         <!-- 下方圆点 -->
         <ul class="slider-dots">
-        
             <li v-on:click="clickDots(index)" v-for="(item,index) in sliderImgList" v-bind:key="index">{{ index+1 }}</li>
-           
         </ul>
     </div>
 </template>
@@ -24,10 +23,22 @@ export default {
         return {
             newIndex:0,
             sliderImgList:[
-                require('../assets/pic1.jpg'),
-                require('../assets/pic2.jpg'),
-                require('../assets/pic3.jpg'),
-                require('../assets/pic4.jpg'),
+                {
+                    imgUrl:require('../assets/pic1.jpg'),
+                    title:"第一张图片"
+                },
+                {
+                    imgUrl:require('../assets/pic2.jpg'),
+                    title:"第二张图片"
+                },
+                {
+                    imgUrl:require('../assets/pic3.jpg'),
+                    title:"第三张图片"
+                },
+                {
+                    imgUrl:require('../assets/pic4.jpg'),
+                    title:"第四张图片"
+                },
 
             ]        
         }
@@ -42,7 +53,7 @@ export default {
             if(this.newIndex < 0){
                 this.newIndex = 3
             }
-            console.log(this.newIndex);
+            // console.log(this.newIndex);
 
         },
         nextHandler(){
@@ -139,5 +150,18 @@ export default {
     }
     .next-btn{
         right: 5px;
+    }
+    .slider-title{
+        /* background: #000000; */
+        color: white;
+        width: 200px;
+        position: absolute;
+        bottom: 10px;
+        z-index: 400;
+        left: 10px;
+        font-size: 30px;
+        text-align: center;
+        line-height: 30px;
+        opacity: 0.5;
     }
 </style>
